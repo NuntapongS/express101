@@ -9,6 +9,6 @@ ports:
 environment:
 - POSTGRES_USER=root
 - POSTGRES_PASSWORD=my-secret-pw@
-- POSTGRES_DB=educare
+- POSTGRES_DB=express101
 volumes: 
 - ./db-data:/var/lib/postgresql/data
