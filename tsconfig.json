@@ -103,5 +103,5 @@
   "parserOptions": {
     "project": "./tsconfig.json"
   },
-  "exclude": ["*/.test.ts"]
+  "exclude": ["**/*.test.ts"]
 }
