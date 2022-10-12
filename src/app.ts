@@ -16,11 +16,11 @@ const main = () => {
     })
   );
 
-  app.use("/api", appRoutes);
-
   app.get("/api/health", (_, res: Response) => {
     res.status(200).json({ message: "OK" });
   });
+
+  app.use("/api", appRoutes);
 
   return app;
 };
