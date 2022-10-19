@@ -8,7 +8,7 @@ class UserController {
     const user: User = req.body;
     try {
       const rs = await new UserServices().create(user);
-      return res.status(201).json(new UserModel(rs).toJSON);
+      return res.status(201).json("Create Successfully");
     } catch (err) {
       console.error(err);
       next(err);
@@ -30,6 +30,17 @@ class UserController {
     try {
       const rs = await new UserServices().getUserByID(id);
       return res.status(200).json(new UserModel(rs).toJSON);
+    } catch (err) {
+      console.error(err);
+      next(err);
+    }
+  };
+  updateUserByID = async (req: Request, res: Response, next: NextFunction) => {
+    const id = Number(req.params.id);
+    const user: User = req.body;
+    try {
+      const rs = await new UserServices().updateUserByID(id, user);
+      return res.status(200).json("Update Successfully");
     } catch (err) {
       console.error(err);
       next(err);

@@ -11,15 +11,8 @@ class UserServices {
     }
     return rs;
   };
-  updateUser = async (id: number, user: User) => {
+  updateUserByID = async (id: number, user: User) => {
     const rs = await prisma.client.user.update({ where: { id }, data: user });
-    if (!rs) {
-      throw new Error(`User with id ${id}} not found`);
-    }
-    return rs;
-  };
-  deleteUser = async (id: number) => {
-    const rs = await prisma.client.user.delete({ where: { id } });
     if (!rs) {
       throw new Error(`User with id ${id}} not found`);
     }
