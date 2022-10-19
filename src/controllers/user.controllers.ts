@@ -14,6 +14,16 @@ class UserController {
       next(err);
     }
   };
+
+  getUsers = async (req: Request, res: Response, next: NextFunction) => {
+    try {
+      const rs = await new UserServices().getUsers();
+      return res.status(200).json(rs.map(user => new UserModel(user).toJSON));
+    } catch (err) {
+      console.error(err);
+      next(err);
+    }
+  };
 }
 
 export const userController = new UserController();
