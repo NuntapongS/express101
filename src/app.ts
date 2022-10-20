@@ -1,6 +1,12 @@
 import cookieParser from "cookie-parser";
 import cors from "cors";
-import express, { json, Response, urlencoded } from "express";
+import express, {
+  json,
+  NextFunction,
+  Request,
+  Response,
+  urlencoded,
+} from "express";
 import { mwLogger } from "./logger";
 import { appRoutes } from "./routes/app.routes";
 
@@ -24,6 +30,13 @@ const main = () => {
   });
 
   app.use("/api", appRoutes);
+
+  app.use((error: unknown, _: Request, res: Response, __: NextFunction) =>
+    res.status(500).json({
+      status_code: 500,
+      message: (error as Error).message,
+    })
+  );
 
   return app;
 };
