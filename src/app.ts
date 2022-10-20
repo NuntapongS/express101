@@ -1,6 +1,7 @@
 import cookieParser from "cookie-parser";
 import cors from "cors";
 import express, { json, Response, urlencoded } from "express";
+import { mwLogger } from "./logger";
 import { appRoutes } from "./routes/app.routes";
 
 const main = () => {
@@ -15,6 +16,8 @@ const main = () => {
       credentials: true,
     })
   );
+
+  app.use(mwLogger);
 
   app.get("/api/health", (_, res: Response) => {
     res.status(200).json({ message: "OK" });
