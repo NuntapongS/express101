@@ -18,6 +18,13 @@ class UserServices {
     }
     return rs;
   };
+  deleteUserByID = async (id: number) => {
+    const rs = await prisma.client.user.delete({ where: { id } });
+    if (!rs) {
+      throw new Error(`User with id ${id}} not found`);
+    }
+    return rs;
+  };
 }
 
 export { UserServices };
