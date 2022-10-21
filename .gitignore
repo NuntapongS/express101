@@ -2,3 +2,5 @@
 /.env
 /db-data
 /src/generated
+
+.DS-STORE
